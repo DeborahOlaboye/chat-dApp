@@ -36,17 +36,12 @@ const RegisterPage = ({ onNavigate }) => {
         setError('');
 
         try {
-            // Upload image to IPFS via Pinata
             const uploadResult = await uploadImageForENS(formData.image, formData.name);
             
             if (!uploadResult.success) {
                 throw new Error(uploadResult.error || 'Failed to upload image');
             }
-            
-            // Register user with contract using IPFS hash
             await registerUser(formData.name, uploadResult.ipfsHash);
-            
-            // Navigate to users page after successful registration
             onNavigate('users');
         } catch (err) {
             setError(err.message || 'Registration failed. Please try again.');

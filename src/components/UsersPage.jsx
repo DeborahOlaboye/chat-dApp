@@ -26,7 +26,6 @@ const UsersPage = ({ onNavigate }) => {
         if (!selectedUser || !address) return;
         try {
             const userMessages = await fetchUserMessages(address);
-            // Filter messages between current user and selected user
             const conversationMessages = userMessages.filter(msg => 
                 (msg.sender === address && msg.receiver === selectedUser.userAddress) ||
                 (msg.sender === selectedUser.userAddress && msg.receiver === address)
@@ -45,8 +44,7 @@ const UsersPage = ({ onNavigate }) => {
         try {
             await sendMessage(selectedUser.name, newMessage);
             setNewMessage('');
-            // Reload messages after sending
-            setTimeout(loadMessages, 2000); // Wait for transaction to be mined
+            setTimeout(loadMessages, 2000); 
         } catch (error) {
             console.error('Error sending message:', error);
         } finally {
@@ -66,7 +64,6 @@ const UsersPage = ({ onNavigate }) => {
                 </button>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-120px)]">
-                    {/* Users List */}
                     <div className="bg-white rounded-lg shadow-xl p-6">
                         <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
                             <Users className="w-5 h-5 mr-2" />
@@ -111,12 +108,9 @@ const UsersPage = ({ onNavigate }) => {
                             )}
                         </div>
                     </div>
-
-                    {/* Chat Area */}
                     <div className="lg:col-span-2 bg-white rounded-lg shadow-xl flex flex-col">
                         {selectedUser ? (
                             <>
-                                {/* Chat Header */}
                                 <div className="p-4 border-b border-gray-200 flex items-center">
                                     <img
                                         src={getIPFSUrl(selectedUser.imageHash)}
@@ -133,8 +127,6 @@ const UsersPage = ({ onNavigate }) => {
                                         </p>
                                     </div>
                                 </div>
-
-                                {/* Messages */}
                                 <div className="flex-1 p-4 overflow-y-auto">
                                     {messages.length === 0 ? (
                                         <p className="text-gray-500 text-center py-8">
@@ -168,8 +160,6 @@ const UsersPage = ({ onNavigate }) => {
                                         </div>
                                     )}
                                 </div>
-
-                                {/* Message Input */}
                                 <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200">
                                     <div className="flex space-x-2">
                                         <input
