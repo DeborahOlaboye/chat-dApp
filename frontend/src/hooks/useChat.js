@@ -45,6 +45,9 @@ export const useChat = () => {
                     functionName: "registrationFee",
                 })
             ]);
+            console.log("Domain:", domainResult);
+            console.log("Registration fee from contract:", feeResult);
+            console.log("Registration fee type:", typeof feeResult);
             setDomain(domainResult);
             setRegistrationFee(feeResult);
         } catch (error) {

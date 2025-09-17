@@ -77,7 +77,7 @@ const RegisterPage = ({ onNavigate }) => {
                                 type="text"
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                placeholder="Enter your name (e.g., deny)"
+                                placeholder="Enter your name (e.g., debielily)"
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                             {formData.name && domain && (
@@ -133,7 +133,7 @@ const RegisterPage = ({ onNavigate }) => {
                         {registrationFee > 0 && (
                             <div className="bg-yellow-50 p-3 rounded-lg">
                                 <p className="text-sm text-yellow-800">
-                                    Registration Fee: {(Number(registrationFee) / 1e18).toFixed(4)} ETH (on Lisk)
+                                    Registration Fee: {(Number(registrationFee) / 1e18).toFixed(4)} ETH
                                 </p>
                             </div>
                         )}
