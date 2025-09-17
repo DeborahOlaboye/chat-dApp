@@ -10,3 +10,6 @@ A decentralized chat application with custom ENS functionality built on Ethereum
 
 ## Contract Address
 - 0x6F305C46269c374d02F68eB736b51C74ec2D94D7
+
+## Verify Contract
+- https://sepolia-blockscout.lisk.com/address/0x6F305C46269c374d02F68eB736b51C74ec2D94D7#code
