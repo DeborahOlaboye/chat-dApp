@@ -133,7 +133,7 @@ const RegisterPage = ({ onNavigate }) => {
                         {registrationFee > 0 && (
                             <div className="bg-yellow-50 p-3 rounded-lg">
                                 <p className="text-sm text-yellow-800">
-                                    Registration Fee: {(Number(registrationFee) / 1e18).toFixed(4)} ETH
+                                    Registration Fee: {(Number(registrationFee) / 1e18).toFixed(4)} ETH (on Lisk)
                                 </p>
                             </div>
                         )}

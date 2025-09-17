@@ -1,13 +1,13 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { sepolia } from "wagmi/chains";
+import { liskSepolia } from "wagmi/chains";
 import { http } from "viem";
 
 export const config = getDefaultConfig({
     appName: "Ambience Chat DApp",
     projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
-    chains: [sepolia],
+    chains: [liskSepolia],
     transports: {
-        [sepolia.id]: http(import.meta.env.VITE_RPC_URL),
+        [liskSepolia.id]: http(import.meta.env.VITE_RPC_URL),
     },
 });
