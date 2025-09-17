@@ -9,4 +9,4 @@ A decentralized chat application with custom ENS functionality built on Ethereum
 - **User Directory**: Browse all registered users with their ENS names and profiles
 
 ## Contract Address
-- 0x89B90374c5a2DB2c0742A3C6a471dCf3e0c2dD35
+- 0x6F305C46269c374d02F68eB736b51C74ec2D94D7
