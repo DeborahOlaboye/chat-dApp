@@ -4,7 +4,8 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 const ChatModule = buildModule("ChatModule", (m) => {
-  const chat = m.contract("Chat", ["amb", "1000"]);
+  const registrationFee = "1000000000000000";
+  const chat = m.contract("Chat", ["amb", registrationFee]);
 
   return { chat };
 });
