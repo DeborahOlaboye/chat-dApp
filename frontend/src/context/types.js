@@ -1,0 +1,20 @@
+// Action types
+export const ActionTypes = {
+  // User actions
+  SET_USER: 'SET_USER',
+  CLEAR_USER: 'CLEAR_USER',
+  
+  // UI actions
+  SET_LOADING: 'SET_LOADING',
+  SET_ERROR: 'SET_ERROR',
+  CLEAR_ERROR: 'CLEAR_ERROR',
+  
+  // Chat actions
+  SET_CONVERSATIONS: 'SET_CONVERSATIONS',
+  ADD_MESSAGE: 'ADD_MESSAGE',
+  SET_ACTIVE_CONVERSATION: 'SET_ACTIVE_CONVERSATION',
+  
+  // ENS actions
+  SET_ENS_NAME: 'SET_ENS_NAME',
+  SET_ENS_NAMES: 'SET_ENS_NAMES'
+};
