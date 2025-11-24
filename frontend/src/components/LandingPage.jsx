@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
+import { WalletConnectButton } from './WalletConnectButton';
 
 const LandingPage = ({ onNavigate }) => {
     const { address, isConnected } = useAccount();
@@ -16,7 +15,9 @@ const LandingPage = ({ onNavigate }) => {
                 </p>
                 
                 <div className="space-y-6">
-                    <ConnectButton />
+                    <div className="flex justify-center">
+                        <WalletConnectButton />
+                    </div>
                     
                     {isConnected && (
                         <div className="space-y-4">
