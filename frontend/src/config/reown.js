@@ -3,7 +3,7 @@ import { liskSepolia } from 'wagmi/chains';
 import { createAppKit } from '@reown/appkit-adapter-wagmi';
 
 // Create the AppKit instance
-export const appKit = createAppKit({
+const appKit = createAppKit({
   appName: 'Ambience Chat DApp',
   projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
 });
