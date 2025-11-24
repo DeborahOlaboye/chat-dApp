@@ -1,9 +1,9 @@
 import { createConfig, http } from 'wagmi';
 import { liskSepolia } from 'wagmi/chains';
-import { createAppKit } from '@reown/appkit-adapter-wagmi';
+import { AppKit } from '@reown/appkit';
 
-// Create the AppKit instance
-const appKit = createAppKit({
+// Initialize AppKit
+const appKit = new AppKit({
   appName: 'Ambience Chat DApp',
   projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
 });
@@ -14,7 +14,7 @@ export const config = createConfig({
   transports: {
     [liskSepolia.id]: http(import.meta.env.VITE_RPC_URL),
   },
-  ...appKit.wagmiConfig, // Merge AppKit's config
+  ...appKit.getWagmiConfig(), // Use AppKit's wagmi config
 });
 
 // Export the AppKit instance for use in components

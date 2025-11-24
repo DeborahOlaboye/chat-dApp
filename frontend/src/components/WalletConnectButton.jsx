@@ -17,7 +17,7 @@ export function WalletConnectButton() {
     return (
       <div className="flex items-center gap-2">
         <span className="text-sm font-medium">
-          {`${address.slice(0, 6)}...${address.slice(-4)}`}
+          {`${address?.slice(0, 6)}...${address?.slice(-4)}`}
         </span>
         <button
           onClick={() => disconnect()}
