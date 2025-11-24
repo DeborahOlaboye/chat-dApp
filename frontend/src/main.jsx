@@ -5,7 +5,7 @@ import App from './App.jsx';
 import { config } from './config/reown.js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
-import { AppProvider } from './context/AppContext';
+import { AppProvider } from './context/AppContext.jsx';
 import { appReducer, initialState } from './context/AppReducer';
 
 const queryClient = new QueryClient({
