@@ -1,10 +1,9 @@
 import React, { createContext, useReducer, useContext, useCallback, useEffect } from 'react';
 import { useAccount, useDisconnect } from 'wagmi';
 import { appKit } from '../config/reown';
+import { ActionTypes } from './types';
 import { 
   initialState, 
-  setUser, 
-  clearUser, 
   setLoading, 
   setError, 
   clearError,
@@ -24,24 +23,31 @@ export const AppProvider = ({ children, reducer }) => {
   // Handle wallet connection changes
   useEffect(() => {
     if (isConnected && address) {
-      dispatch(setUser({ address }));
+      // Use the imported setUser action creator
+      dispatch({
+        type: ActionTypes.SET_USER,
+        payload: { address }
+      });
       // Optionally fetch ENS name here if needed
     } else {
-      dispatch(clearUser());
+      dispatch({ type: ActionTypes.CLEAR_USER });
     }
   }, [isConnected, address]);
 
   // Connect wallet function
   const connectWallet = useCallback(async () => {
     try {
-      dispatch(setLoading(true));
-      dispatch(clearError());
+      dispatch({ type: ActionTypes.SET_LOADING, payload: true });
+      dispatch({ type: ActionTypes.CLEAR_ERROR });
       await appKit.connect();
     } catch (error) {
       console.error('Failed to connect wallet:', error);
-      dispatch(setError(error.message || 'Failed to connect wallet'));
+      dispatch({ 
+        type: ActionTypes.SET_ERROR, 
+        payload: error.message || 'Failed to connect wallet' 
+      });
     } finally {
-      dispatch(setLoading(false));
+      dispatch({ type: ActionTypes.SET_LOADING, payload: false });
     }
   }, []);
 
@@ -49,21 +55,30 @@ export const AppProvider = ({ children, reducer }) => {
   const disconnectWallet = useCallback(() => {
     try {
       disconnect();
-      dispatch(clearUser());
+      dispatch({ type: ActionTypes.CLEAR_USER });
     } catch (error) {
       console.error('Failed to disconnect wallet:', error);
-      dispatch(setError(error.message || 'Failed to disconnect wallet'));
+      dispatch({ 
+        type: ActionTypes.SET_ERROR, 
+        payload: error.message || 'Failed to disconnect wallet' 
+      });
     }
   }, [disconnect]);
 
   // Set ENS name for an address
   const updateENSName = useCallback((address, name) => {
-    dispatch(setENSName(address, name));
+    dispatch({ 
+      type: ActionTypes.SET_ENS_NAME, 
+      payload: { address, name } 
+    });
   }, []);
 
   // Set multiple ENS names at once
   const updateENSNames = useCallback((names) => {
-    dispatch(setENSNames(names));
+    dispatch({ 
+      type: ActionTypes.SET_ENS_NAMES, 
+      payload: names 
+    });
   }, []);
 
   // Get ENS name for an address
@@ -100,9 +115,9 @@ export const AppProvider = ({ children, reducer }) => {
     // Actions
     connectWallet,
     disconnectWallet,
-    setLoading: (isLoading) => dispatch(setLoading(isLoading)),
-    setError: (error) => dispatch(setError(error)),
-    clearError: () => dispatch(clearError()),
+    setLoading: (isLoading) => dispatch({ type: ActionTypes.SET_LOADING, payload: isLoading }),
+    setError: (error) => dispatch({ type: ActionTypes.SET_ERROR, payload: error }),
+    clearError: () => dispatch({ type: ActionTypes.CLEAR_ERROR }),
     setENSName: updateENSName,
     setENSNames: updateENSNames,
     getENSName,
